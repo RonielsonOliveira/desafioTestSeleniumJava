@@ -105,7 +105,7 @@ public class Automacao extends TestBase {
     String monthYearValue = Driver.driver.findElement(By.className("ui-datepicker-title")).getText();
     String month = monthYearValue.split(" ")[0].trim();
     String year = monthYearValue.split(" ")[1].trim();
-    while (!(month.equals("August") && year.equals("2013"))){
+    while (!(month.equals("August") && year.equals("1997"))){
       Driver.driver.findElement(By.xpath("//a[@title='Prev']")).click();
       monthYearValue = Driver.driver.findElement(By.className("ui-datepicker-title")).getText();
       month = monthYearValue.split(" ")[0].trim();
@@ -114,20 +114,10 @@ public class Automacao extends TestBase {
     }
     Driver.driver.findElement(By.xpath("//a[text()='13']")).click();
 
-    Driver.driver.findElement(By.id("datepicker2")).click();
-    Driver.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-    Driver.driver.findElement(By.cssSelector("[title='Change the month']")).click();
+    Driver.driver.findElement(By.xpath("//*[@id=\"datepicker2\"]")).click();
+    Driver.driver.findElement(By.xpath("//*[@id=\"datepicker2\"]")).sendKeys("08/13/1997", Keys.ENTER);
 
-    Select month2 = new Select(Driver.driver.findElement(By.cssSelector("[title='Change the month']")));
-    month2.selectByVisibleText("August");
 
-    Driver.driver.findElement(By.cssSelector("[title='Change the year']")).click();
-    Driver.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-    Select year2 = new Select(Driver.driver.findElement(By.cssSelector("[title='Change the year']")));
-    Driver.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-
-    year2.selectByVisibleText("2013");
-     Driver.driver.findElement(By.xpath("//a[text()='13']")).click();
   }
 // Cenario 4
   @Test
